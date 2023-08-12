@@ -1,17 +1,30 @@
 const mongoose = require('mongoose')
 
 
-const product = new mongoose.Schema({
+const productSchema = mongoose.Schema({
     name:{
-        type:String,
-        required : [true,'Name is rquired '],
-        maxlength: [20,'length should be less than 20']
-    },
-    email:{
         type: String,
-        required : [true,'email is required '],
+        required:[true,'Please enter the name of product'],
+        maxlength:[20,'product name should be less than 20']
+    },
+    quantity:{
+        type:Number,
+        required:[true,'please enter the quantity'],
+        maxlength:[100,'quantity should be less than  100']
+    },
+    price:{
+        type:Number,
+        required:[true,'please enter the price of product']
+    },
+    image:{
+        type:String,
+        required:false
     }
-})
+    },
+    {
+        timestamps:true
+    }
+);
 
-const product1 = mongoose.model('product1',product);
-module.exports =product1;
+const product = mongoose.model('product',productSchema);
+module.exports =product;

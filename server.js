@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended : true}));
 app.use(cors());
 
 
-
+mongoose.set("strictQuery",false);
 //connect with mongodb atlas 
 const connectToDb = async ()=>{
     mongoose.connect(process.env.mongoUrl)
